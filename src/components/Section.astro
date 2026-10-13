@@ -1,0 +1,15 @@
+---
+// A content section: full-width background, content up to 1168px wide.
+interface Props {
+  tone: "dark" | "light";
+  class?: string;
+}
+
+const { tone, class: className } = Astro.props;
+---
+
+<section class:list={["px-24 py-56 md:px-section-x md:py-section-y", { "bg-cream text-forest": tone === "light" }]}>
+  <div class:list={["mx-auto max-w-1168", className]}>
+    <slot />
+  </div>
+</section>

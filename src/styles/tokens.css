@@ -1,0 +1,151 @@
+/*
+ * Design tokens: the only place for colors, fonts, type sizes, spacing and radii.
+ * Source: design/design_handoff_landing/README.md.
+ *
+ * Tailwind's default palette, fonts, type scale and radii are removed,
+ * so components can only use the values below.
+ */
+
+@theme {
+  /* Colors */
+  --color-*: initial;
+  --color-forest: #24392f;
+  --color-line-dark: #4d6b5b;
+  --color-cream: #f3ead6;
+  --color-gold: #e6c46a;
+  --color-muted-dark: #d9d1bd;
+  --color-muted-dark-2: #b9c7b8;
+  --color-muted-light: #4a5a50;
+  --color-line-light: #c9bc9f;
+  --color-rust: oklch(0.58 0.15 38);
+  --color-rust-ink: #fbf3e2;
+
+  /* Font families (the font files themselves are set up in astro.config.mjs) */
+  --font-*: initial;
+  --font-display: var(--font-oswald);
+  --font-text: var(--font-pt-serif);
+  --font-hand: var(--font-caveat);
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /*
+   * Type scale, mobile values. Desktop values are below, in the `md` block,
+   * so `text-h1` and friends adapt to the screen on their own.
+   */
+  --text-*: initial;
+  --leading-*: initial;
+  --tracking-*: initial;
+
+  /*
+   * 42px as designed; on phones narrower than ~374px it shrinks so the longest
+   * word (about 7em) still fits between the hero frame lines (80px in total).
+   */
+  --text-h1: min(42px, calc((100vw - 80px) / 7));
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -0.005em;
+  --text-h2: 34px;
+  --text-h2--line-height: 1.02;
+  --text-h2-lg: 36px;
+  --text-h2-lg--line-height: 1.02;
+
+  --text-label: 13px;
+  --text-label--line-height: normal;
+  --text-label--letter-spacing: 0.18em;
+  --text-button: 18px;
+  --text-button--line-height: normal;
+  --text-button--letter-spacing: 0.12em;
+  --text-step: 21px;
+  --text-step--line-height: normal;
+  --text-step--letter-spacing: 0.02em;
+  --text-card: 21px;
+  --text-card--line-height: 1.15;
+  --text-numeral: 20px;
+  --text-numeral--line-height: normal;
+  --text-sign: 24px;
+  --text-sign--line-height: normal;
+  --text-initials: 14px;
+  --text-initials--line-height: normal;
+
+  --text-lead: 16px;
+  --text-lead--line-height: 1.5;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-list: 17px;
+  --text-list--line-height: 1.45;
+  --text-question: 17px;
+  --text-question--line-height: 1.35;
+  --text-search: 16px;
+  --text-search--line-height: normal;
+  --text-name: 15px;
+  --text-name--line-height: normal;
+  --text-meta: 13px;
+  --text-meta--line-height: 1.35;
+  /* The ◆ marker keeps the line height of the list item it sits in */
+  --text-marker: 11px;
+
+  --text-note: 24px;
+  --text-note--line-height: normal;
+  --text-note-sm: 20px;
+  --text-note-sm--line-height: normal;
+
+  /* Spacing: one step is 1px, so `p-14` is 14px, exactly as in the design */
+  --spacing: 1px;
+
+  /* Fluid desktop spacing */
+  --spacing-frame: clamp(14px, 2vw, 24px);
+  --spacing-frame-x: clamp(18px, 4vw, 56px);
+  --spacing-hero-t: clamp(18px, 3vw, 36px);
+  --spacing-hero-b: clamp(28px, 5vw, 64px);
+  --spacing-hero-gap: clamp(32px, 6vw, 80px);
+  --spacing-hero-cols: clamp(40px, 6vw, 88px);
+  --spacing-hero-min: min(760px, calc(100vh - 80px));
+  --spacing-section-y: clamp(56px, 8vw, 112px);
+  --spacing-section-x: clamp(24px, 5vw, 64px);
+  --spacing-split: clamp(28px, 5vw, 80px);
+  --spacing-stack: clamp(32px, 4vw, 56px);
+  --spacing-steps: clamp(28px, 4vw, 56px);
+  --spacing-steps-t: clamp(28px, 3vw, 40px);
+  --spacing-final-t: clamp(48px, 7vw, 96px);
+  --spacing-final-b: clamp(28px, 3vw, 40px);
+  --spacing-final-label: clamp(32px, 5vw, 64px);
+
+  /* Radii */
+  --radius-*: initial;
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+/* Type scale, desktop values */
+:root {
+  @variant md {
+    --text-h1: clamp(40px, 4.6vw, 68px);
+    --text-h2: clamp(34px, 3.6vw, 52px);
+    --text-h2-lg: clamp(36px, 4.6vw, 64px);
+
+    --text-label: 14px;
+    --text-step: 24px;
+    --text-card: 24px;
+    --text-numeral: 22px;
+    --text-sign: 26px;
+    --text-initials: 16px;
+
+    --text-lead: 18px;
+    --text-lead--line-height: 1.55;
+    --text-body: 17px;
+    --text-body--line-height: 1.55;
+    --text-list: 19px;
+    --text-question: 19px;
+    --text-search: 18px;
+    --text-name: 17px;
+    --text-meta: 14px;
+    --text-meta--line-height: 1.4;
+    --text-marker: 12px;
+
+    --text-note: 28px;
+    --text-note-sm: 24px;
+  }
+}

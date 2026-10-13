@@ -1,0 +1,45 @@
+---
+import { APP_URL } from "../config";
+import Cta from "./Cta.astro";
+import LabelFrame from "./LabelFrame.astro";
+import SearchDemo from "./SearchDemo.astro";
+---
+
+<section class="flex min-h-svh flex-col p-14 md:block md:min-h-0 md:p-frame">
+  <LabelFrame
+    tone="gold"
+    class="flex-1 md:mx-auto md:box-content md:max-w-1280"
+    innerClass="flex flex-col gap-18 px-18 pt-18 pb-20 md:min-h-hero-min md:gap-hero-gap md:px-frame-x md:pt-hero-t md:pb-hero-b"
+  >
+    <header
+      class="flex items-center justify-between font-display text-label font-medium text-gold uppercase md:grid md:grid-cols-[1fr_auto_1fr] md:gap-16"
+    >
+      <span>Кто есть кто</span>
+      <span class="md:text-center">Записная книжка</span>
+      <a
+        href={APP_URL}
+        class="hidden rounded-sm border-[1.5px] border-gold px-16 py-9 hover:opacity-90 md:block md:justify-self-end"
+      >
+        Открыть приложение
+      </a>
+    </header>
+
+    <div
+      class="mt-28 flex flex-col gap-42 md:mt-0 md:grid md:flex-1 md:grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] md:items-center md:gap-hero-cols"
+    >
+      <div class="flex flex-col gap-16 md:gap-22">
+        <p class="origin-left -rotate-3 font-hand text-note font-medium text-gold">запиши пару строк →</p>
+        <h1 class="font-display text-h1 font-bold text-balance uppercase">Не забывай, о&nbsp;чём договорились</h1>
+        <p class="text-lead text-pretty text-muted-dark md:max-w-500">
+          Записывай после разговора пару строк, и в следующий раз продолжишь с того места, где остановились. Все твои
+          знакомые и всё важное о них в одном списке.
+        </p>
+        <Cta
+          class="flex flex-col gap-8 md:mt-8 md:flex-row md:flex-wrap md:items-center md:gap-20"
+          buttonClass="md:px-36"
+        />
+      </div>
+      <SearchDemo />
+    </div>
+  </LabelFrame>
+</section>

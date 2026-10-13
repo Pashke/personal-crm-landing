@@ -1,0 +1,33 @@
+---
+import LabelFrame from "./LabelFrame.astro";
+import Section from "./Section.astro";
+
+const benefits = [
+  {
+    title: "История, а не просто номер.",
+    text: "У каждого человека свои заметки: что обсуждали, что обещали, что важно.",
+  },
+  { title: "Найдёшь любого, даже если знакомых сотни.", text: "Поиск по имени работает сразу, пока печатаешь." },
+  { title: "Один список на всех устройствах.", text: "Открыл на телефоне или на компьютере, и всё на месте." },
+];
+---
+
+<Section tone="light" class="flex flex-col gap-28 md:gap-stack">
+  <h2 class="font-display text-h2 font-bold text-balance uppercase">Почему удобно</h2>
+  <ul class="flex flex-col gap-14 md:grid md:grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] md:gap-20">
+    {
+      benefits.map((benefit) => (
+        <li class="flex">
+          <LabelFrame
+            tone="forest"
+            class="flex-1"
+            innerClass="flex flex-col gap-8 px-18 pt-18 pb-20 md:gap-12 md:px-24 md:pt-26 md:pb-28"
+          >
+            <h3 class="font-display text-card font-medium text-balance uppercase">{benefit.title}</h3>
+            <p class="text-body text-pretty text-muted-light">{benefit.text}</p>
+          </LabelFrame>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

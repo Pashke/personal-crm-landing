@@ -1,0 +1,23 @@
+---
+import { APP_URL, SHOW_FREE_NOTE } from "../config";
+
+interface Props {
+  class?: string;
+  buttonClass?: string;
+}
+
+const { class: className, buttonClass } = Astro.props;
+---
+
+<div class={className}>
+  <a
+    href={APP_URL}
+    class:list={[
+      "flex h-58 items-center justify-center rounded-sm bg-rust font-display text-button font-medium text-rust-ink uppercase hover:opacity-90 md:h-60",
+      buttonClass,
+    ]}
+  >
+    Открыть приложение
+  </a>
+  {SHOW_FREE_NOTE && <p class="text-center font-hand text-note-sm font-medium text-gold">Бесплатно</p>}
+</div>

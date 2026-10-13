@@ -1,0 +1,25 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <Font cssVariable="--font-oswald" preload={[{ subset: "cyrillic", weight: 700 }]} />
+    <Font cssVariable="--font-pt-serif" preload={[{ subset: "cyrillic", weight: 400 }]} />
+    <Font cssVariable="--font-caveat" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,27 @@
+---
+import Section from "./Section.astro";
+
+const pains = [
+  "Тебе пишут «ну что, как договаривались?», а ты не помнишь, о чём",
+  "Лицо знакомое, но имя и где вы виделись вылетели из головы",
+  "Хотел познакомить двух друзей, но забыл, чем занимается один из них",
+  "Чтобы вспомнить детали, листаешь переписку на полгода назад",
+];
+---
+
+<Section
+  tone="light"
+  class="flex flex-col gap-28 md:grid md:grid-cols-[repeat(auto-fit,minmax(min(100%,360px),1fr))] md:items-start md:gap-split"
+>
+  <h2 class="font-display text-h2 font-bold text-balance uppercase">Память подводит в&nbsp;самый неудобный момент</h2>
+  <ul class="border-t-2 border-forest">
+    {
+      pains.map((pain) => (
+        <li class="flex gap-14 border-b border-line-light py-16 text-list text-pretty md:gap-16 md:py-20">
+          <span aria-hidden="true" class="pt-6 text-marker text-rust md:pt-7">◆</span>
+          <span>{pain}</span>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

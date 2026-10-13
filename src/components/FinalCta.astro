@@ -1,0 +1,21 @@
+---
+import Cta from "./Cta.astro";
+import LabelFrame from "./LabelFrame.astro";
+---
+
+<section class="px-14 pb-14 md:px-frame md:pb-frame">
+  <LabelFrame
+    tone="gold"
+    class="md:mx-auto md:box-content md:max-w-1280"
+    innerClass="flex flex-col items-center gap-18 px-18 pt-36 pb-24 text-center md:gap-22 md:px-frame-x md:pt-final-t md:pb-final-b"
+  >
+    <h2 class="font-display text-h2-lg font-bold text-balance uppercase md:max-w-760">
+      Кого ты встретил на&nbsp;этой неделе?
+    </h2>
+    <p class="text-lead text-pretty text-muted-dark md:max-w-520">
+      Добавь его в список и запиши, о чём вы говорили. Через месяц скажешь себе спасибо.
+    </p>
+    <Cta class="mt-6 flex w-full flex-col gap-8 md:mt-8 md:w-auto md:items-center md:gap-10" buttonClass="md:px-40" />
+    <p class="mt-14 font-display text-label font-medium text-gold uppercase md:mt-final-label">Кто есть кто</p>
+  </LabelFrame>
+</section>

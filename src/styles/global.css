@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  body {
+    background-color: var(--color-forest);
+    color: var(--color-cream);
+    font-family: var(--font-text);
+    line-height: normal;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+}

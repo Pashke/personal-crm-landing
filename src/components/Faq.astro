@@ -1,0 +1,39 @@
+---
+import Section from "./Section.astro";
+
+const questions = [
+  {
+    question: "Зачем, если есть заметки в телефоне?",
+    answer:
+      "Заметки в телефоне не привязаны к людям. Здесь у каждого человека своя карточка: как связаться, откуда вы знакомы и все записи о нём.",
+  },
+  {
+    question: "Это долго заполнять?",
+    answer: "Чтобы добавить человека, нужна одна короткая форма. Заметка после разговора занимает пару строк.",
+  },
+  { question: "Работает без интернета?", answer: "Интернет нужен только для синхронизации." },
+  { question: "Кто увидит мои контакты?", answer: "Только ты. Твои контакты и заметки никто, кроме тебя, не видит." },
+  { question: "Сколько стоит?", answer: "Бесплатно." },
+];
+---
+
+<Section tone="dark" class="flex flex-col gap-24 md:flex-row md:flex-wrap md:items-start md:gap-split">
+  <h2 class="font-display text-h2 font-bold text-balance uppercase md:grow md:basis-220">Вопросы</h2>
+  <div class="border-t-2 border-gold md:min-w-0 md:grow-3 md:basis-520">
+    {
+      questions.map((item, i) => (
+        // The shared `name` keeps at most one answer open; the first one starts open.
+        <details name="faq" open={i === 0} class="group border-b border-line-dark">
+          <summary class="flex min-h-44 cursor-pointer list-none items-center justify-between gap-16 py-18 md:gap-20 md:py-22 [&::-webkit-details-marker]:hidden">
+            <span class="text-question font-bold text-pretty">{item.question}</span>
+            <span aria-hidden="true" class="w-20 shrink-0 text-center font-display text-sign font-medium text-gold md:w-22">
+              <span class="group-open:hidden">+</span>
+              <span class="hidden group-open:inline">−</span>
+            </span>
+          </summary>
+          <p class="pr-36 pb-20 text-body text-pretty text-muted-dark md:pr-48 md:pb-24">{item.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</Section>

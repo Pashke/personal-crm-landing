@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Кто есть кто — записная книжка для знакомых</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Caveat:wght@500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#d9d6cf;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}a:hover{opacity:.9}</style>
+</helmet>
+<div style="max-width:390px;margin:0 auto;background:#24392f;color:#f3ead6;font-family:'PT Serif',serif;box-shadow:0 20px 60px rgba(0,0,0,.2)">
+
+  <div data-screen-label="01 Первый экран" style="height:844px;display:flex;flex-direction:column;padding:14px;box-sizing:border-box">
+    <div style="flex:1;min-width:0;border:2px solid #e6c46a;border-radius:6px;padding:5px;display:flex">
+      <div style="flex:1;min-width:0;border:1px solid #e6c46a;border-radius:3px;display:flex;flex-direction:column;padding:18px 18px 20px;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#e6c46a">
+          <span>Кто есть кто</span><span>Записная книжка</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+          <div style="font-family:'Caveat',cursive;font-size:24px;color:#e6c46a;transform:rotate(-3deg);transform-origin:left">запиши пару строк →</div>
+          <h1 style="margin:0;font-family:'Oswald',sans-serif;font-size:42px;line-height:1;font-weight:700;text-transform:uppercase;letter-spacing:-0.005em;text-wrap:balance">Не забывай, о&nbsp;чём договорились</h1>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#d9d1bd;text-wrap:pretty">Записывай после разговора пару строк, и в следующий раз продолжишь с того места, где остановились. Все твои знакомые и всё важное о них в одном списке.</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a href="https://app.example.com" style="height:58px;display:flex;align-items:center;justify-content:center;background:oklch(0.58 0.15 38);color:#fbf3e2;border-radius:4px;font-family:'Oswald',sans-serif;font-size:18px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase">Открыть приложение</a>
+            <sc-if value="{{ showFree }}" hint-placeholder-val="{{ true }}"><div style="font-family:'Caveat',cursive;font-size:20px;color:#e6c46a;text-align:center">Бесплатно</div></sc-if>
+          </div>
+        </div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px">
+          <div style="height:46px;display:flex;align-items:center;gap:10px;padding:0 14px;background:#f3ead6;color:#24392f;border-radius:4px;font-family:'PT Serif',serif;font-size:16px">
+            <span style="width:12px;height:12px;border:2px solid #24392f;border-radius:50%;flex-shrink:0;box-sizing:border-box"></span>
+            <span>Ан<span style="display:inline-block;width:1.5px;height:18px;background:#24392f;vertical-align:-3px;margin-left:1px"></span></span>
+          </div>
+          <div style="display:flex;flex-direction:column;border:1px solid #4d6b5b;border-radius:4px">
+            <div style="display:flex;gap:12px;align-items:center;padding:10px 12px;border-bottom:1px solid #4d6b5b">
+              <div style="width:34px;height:34px;border-radius:50%;background:#e6c46a;color:#24392f;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:500;font-size:14px;flex-shrink:0">АС</div>
+              <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                <div style="font-size:15px;font-weight:700"><span style="color:#e6c46a">Ан</span>на Соколова</div>
+                <div style="font-size:13px;line-height:1.35;color:#b9c7b8;text-wrap:pretty">Конференция в Казани · обещала прислать статью</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:10px 12px">
+              <div style="width:34px;height:34px;border-radius:50%;border:1px solid #e6c46a;color:#e6c46a;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:500;font-size:14px;flex-shrink:0;box-sizing:border-box">АП</div>
+              <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                <div style="font-size:15px;font-weight:700"><span style="color:#e6c46a">Ан</span>дрей Петров</div>
+                <div style="font-size:13px;line-height:1.35;color:#b9c7b8;text-wrap:pretty">Сосед по даче · ищет дизайнера</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-screen-label="02 Боль" style="background:#f3ead6;color:#24392f;padding:56px 24px;display:flex;flex-direction:column;gap:28px">
+    <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;line-height:1.02;font-weight:700;text-transform:uppercase;text-wrap:balance">Память подводит в&nbsp;самый неудобный момент</h2>
+    <div style="display:flex;flex-direction:column;border-top:2px solid #24392f">
+      <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #c9bc9f;font-size:17px;line-height:1.45;text-wrap:pretty"><span style="color:oklch(0.58 0.15 38);font-size:11px;padding-top:6px">◆</span><span>Тебе пишут «ну что, как договаривались?», а ты не помнишь, о чём</span></div>
+      <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #c9bc9f;font-size:17px;line-height:1.45;text-wrap:pretty"><span style="color:oklch(0.58 0.15 38);font-size:11px;padding-top:6px">◆</span><span>Лицо знакомое, но имя и где вы виделись вылетели из головы</span></div>
+      <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #c9bc9f;font-size:17px;line-height:1.45;text-wrap:pretty"><span style="color:oklch(0.58 0.15 38);font-size:11px;padding-top:6px">◆</span><span>Хотел познакомить двух друзей, но забыл, чем занимается один из них</span></div>
+      <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #c9bc9f;font-size:17px;line-height:1.45;text-wrap:pretty"><span style="color:oklch(0.58 0.15 38);font-size:11px;padding-top:6px">◆</span><span>Чтобы вспомнить детали, листаешь переписку на полгода назад</span></div>
+    </div>
+  </div>
+
+  <div data-screen-label="03 Как это работает" style="padding:56px 24px;display:flex;flex-direction:column;gap:30px">
+    <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;line-height:1.02;font-weight:700;text-transform:uppercase">Как это работает</h2>
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <div style="width:44px;height:44px;flex-shrink:0;border:2px solid #e6c46a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:#e6c46a;box-sizing:border-box">1</div>
+        <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px">
+          <div style="font-family:'Oswald',sans-serif;font-size:21px;font-weight:500;text-transform:uppercase;letter-spacing:0.02em">Запиши человека.</div>
+          <div style="font-size:16px;line-height:1.5;color:#d9d1bd;text-wrap:pretty">Имя, где познакомились, телефон и почта в одной короткой форме.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <div style="width:44px;height:44px;flex-shrink:0;border:2px solid #e6c46a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:#e6c46a;box-sizing:border-box">2</div>
+        <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px">
+          <div style="font-family:'Oswald',sans-serif;font-size:21px;font-weight:500;text-transform:uppercase;letter-spacing:0.02em">Открой, когда нужно.</div>
+          <div style="font-size:16px;line-height:1.5;color:#d9d1bd;text-wrap:pretty">Набери пару букв имени, и карточка уже перед тобой.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <div style="width:44px;height:44px;flex-shrink:0;border:2px solid #e6c46a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:#e6c46a;box-sizing:border-box">3</div>
+        <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px">
+          <div style="font-family:'Oswald',sans-serif;font-size:21px;font-weight:500;text-transform:uppercase;letter-spacing:0.02em">Добавь заметку.</div>
+          <div style="font-size:16px;line-height:1.5;color:#d9d1bd;text-wrap:pretty">После разговора запиши главное. Заметки копятся в карточке, и вся история ваших разговоров под рукой.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-screen-label="04 Почему удобно" style="background:#f3ead6;color:#24392f;padding:56px 24px;display:flex;flex-direction:column;gap:28px">
+    <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;line-height:1.02;font-weight:700;text-transform:uppercase">Почему удобно</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="border:2px solid #24392f;border-radius:6px;padding:4px"><div style="border:1px solid #24392f;border-radius:3px;padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Oswald',sans-serif;font-size:21px;line-height:1.15;font-weight:500;text-transform:uppercase;text-wrap:balance">История, а не просто номер.</div>
+        <div style="font-size:16px;line-height:1.5;color:#4a5a50;text-wrap:pretty">У каждого человека свои заметки: что обсуждали, что обещали, что важно.</div>
+      </div></div>
+      <div style="border:2px solid #24392f;border-radius:6px;padding:4px"><div style="border:1px solid #24392f;border-radius:3px;padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Oswald',sans-serif;font-size:21px;line-height:1.15;font-weight:500;text-transform:uppercase;text-wrap:balance">Найдёшь любого, даже если знакомых сотни.</div>
+        <div style="font-size:16px;line-height:1.5;color:#4a5a50;text-wrap:pretty">Поиск по имени работает сразу, пока печатаешь.</div>
+      </div></div>
+      <div style="border:2px solid #24392f;border-radius:6px;padding:4px"><div style="border:1px solid #24392f;border-radius:3px;padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Oswald',sans-serif;font-size:21px;line-height:1.15;font-weight:500;text-transform:uppercase;text-wrap:balance">Один список на всех устройствах.</div>
+        <div style="font-size:16px;line-height:1.5;color:#4a5a50;text-wrap:pretty">Открыл на телефоне или на компьютере, и всё на месте.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div data-screen-label="05 Вопросы" style="padding:56px 24px;display:flex;flex-direction:column;gap:24px">
+    <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;line-height:1.02;font-weight:700;text-transform:uppercase">Вопросы</h2>
+    <div style="display:flex;flex-direction:column;border-top:2px solid #e6c46a">
+      <sc-for list="{{ faq }}" as="f" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid #4d6b5b">
+          <div onClick="{{ f.toggle }}" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;cursor:pointer;min-height:44px;box-sizing:border-box">
+            <span style="font-size:17px;font-weight:700;line-height:1.35;text-wrap:pretty">{{ f.q }}</span>
+            <span style="font-family:'Oswald',sans-serif;font-size:24px;color:#e6c46a;width:20px;text-align:center;flex-shrink:0">{{ f.sign }}</span>
+          </div>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 36px 20px 0;font-size:16px;line-height:1.5;color:#d9d1bd;text-wrap:pretty">{{ f.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-screen-label="06 Финальный призыв" style="padding:0 14px 14px">
+    <div style="border:2px solid #e6c46a;border-radius:6px;padding:5px">
+      <div style="border:1px solid #e6c46a;border-radius:3px;padding:36px 18px 24px;display:flex;flex-direction:column;gap:18px;text-align:center;align-items:center">
+        <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:36px;line-height:1.02;font-weight:700;text-transform:uppercase;text-wrap:balance">Кого ты встретил на&nbsp;этой неделе?</h2>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:#d9d1bd;text-wrap:pretty">Добавь его в список и запиши, о чём вы говорили. Через месяц скажешь себе спасибо.</p>
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-top:6px">
+          <a href="https://app.example.com" style="height:58px;display:flex;align-items:center;justify-content:center;background:oklch(0.58 0.15 38);color:#fbf3e2;border-radius:4px;font-family:'Oswald',sans-serif;font-size:18px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase">Открыть приложение</a>
+          <sc-if value="{{ showFree }}" hint-placeholder-val="{{ true }}"><div style="font-family:'Caveat',cursive;font-size:20px;color:#e6c46a">Бесплатно</div></sc-if>
+        </div>
+        <div style="margin-top:14px;font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#e6c46a">Кто есть кто</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showFree&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Страница&quot;},&quot;faqOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Страница&quot;}}">
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const items = [
+      ['Зачем, если есть заметки в телефоне?', 'Заметки в телефоне не привязаны к людям. Здесь у каждого человека своя карточка: как связаться, откуда вы знакомы и все записи о нём.'],
+      ['Это долго заполнять?', 'Чтобы добавить человека, нужна одна короткая форма. Заметка после разговора занимает пару строк.'],
+      ['Работает без интернета?', 'Интернет нужен только для синхронизации.'],
+      ['Кто увидит мои контакты?', 'Только ты. Твои контакты и заметки никто, кроме тебя, не видит.'],
+      ['Сколько стоит?', 'Бесплатно.']
+    ];
+    const allOpen = this.props.faqOpen ?? false;
+    return {
+      showFree: this.props.showFree ?? true,
+      faq: items.map(([q, a], i) => {
+        const open = allOpen || this.state.open === i;
+        return { q, a, open, sign: open ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

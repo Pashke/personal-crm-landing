@@ -1,0 +1,27 @@
+---
+// The signature double "label" border: a thick outer line and a thin inner one.
+// Gold frames the big blocks on the dark background, forest frames cards on the light one.
+interface Props {
+  tone: "gold" | "forest";
+  class?: string;
+  innerClass?: string;
+}
+
+const { tone, class: className, innerClass } = Astro.props;
+
+const outer = {
+  gold: "border-gold rounded-md p-5 md:rounded-lg md:p-6",
+  forest: "border-forest rounded-md p-4 md:p-5",
+}[tone];
+
+const inner = {
+  gold: "border-gold rounded-xs md:rounded-sm",
+  forest: "border-forest rounded-xs",
+}[tone];
+---
+
+<div class:list={["flex border-2", outer, className]}>
+  <div class:list={["min-w-0 flex-1 border", inner, innerClass]}>
+    <slot />
+  </div>
+</div>

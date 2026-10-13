@@ -1,0 +1,33 @@
+---
+import Section from "./Section.astro";
+
+const steps = [
+  { title: "Запиши человека.", text: "Имя, где познакомились, телефон и почта в одной короткой форме." },
+  { title: "Открой, когда нужно.", text: "Набери пару букв имени, и карточка уже перед тобой." },
+  {
+    title: "Добавь заметку.",
+    text: "После разговора запиши главное. Заметки копятся в карточке, и вся история ваших разговоров под рукой.",
+  },
+];
+---
+
+<Section tone="dark" class="flex flex-col gap-30 md:gap-stack">
+  <h2 class="font-display text-h2 font-bold text-balance uppercase">Как это работает</h2>
+  <ol
+    class="flex flex-col gap-26 md:grid md:grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] md:gap-steps md:border-t md:border-line-dark md:pt-steps-t"
+  >
+    {
+      steps.map((step, i) => (
+        <li class="flex items-start gap-16 md:flex-col md:items-stretch">
+          <span class="flex size-44 shrink-0 items-center justify-center rounded-full border-2 border-gold font-display text-numeral font-bold text-gold md:size-52">
+            {i + 1}
+          </span>
+          <div class="flex flex-col gap-6 pt-2 md:gap-16 md:pt-0">
+            <h3 class="font-display text-step font-medium text-balance uppercase">{step.title}</h3>
+            <p class="text-body text-pretty text-muted-dark">{step.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
