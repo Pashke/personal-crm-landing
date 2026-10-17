@@ -51,7 +51,8 @@ fi
 RRSYNC="$(command -v rrsync || true)"
 [ -n "$RRSYNC" ] || die "rrsync not found (it comes with the rsync package)"
 command -v python3 >/dev/null 2>&1 || die "python3 not found: rrsync needs it"
-info "$(rsync --version | head -n 1)"
+# sed reads the whole output: "head" would close the pipe early and trip the ERR trap.
+info "$(rsync --version | sed -n 1p)"
 info "rrsync: $RRSYNC"
 
 # ---------------------------------------------------------------- user
