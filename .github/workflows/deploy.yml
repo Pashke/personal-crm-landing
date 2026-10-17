@@ -1,0 +1,86 @@
+# Push to main -> build dist/ -> rsync --delete to the server -> check that the home page answers 200.
+# Server side (user "landing", folder /var/www/whobook.ru) is prepared once by deploy/setup-server.sh.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One deploy at a time; a newer push waits for the running one instead of cancelling it.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  SITE_URL: https://whobook.ru
+  DEPLOY_HOST: 153.76.175.142
+  DEPLOY_USER: landing
+  # Server SSH host key; fingerprint SHA256:Fjr9IyVTskei6cj3ivqjw1tJ8yw/Zf7EdT8U/sbgtXI
+  DEPLOY_KNOWN_HOST: 153.76.175.142 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJOUCc5Geg0q1mKFxLtEs+UwLEfsUYtNXbL2ng2R87q7
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      # Same pnpm as on the developer machine
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 12.9.1
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Stamp the build with the commit
+        run: printf '%s\n' "$GITHUB_SHA" > dist/version.txt
+
+      - name: Set up SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.LANDING_DEPLOY_KEY }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOST" > ~/.ssh/known_hosts
+
+      - name: Copy to the server
+        run: |
+          find dist -type d -exec chmod 755 {} +
+          find dist -type f -exec chmod 644 {} +
+          # The key only allows rsync into /var/www/whobook.ru, so the remote path is relative to it.
+          rsync --recursive --times --perms --delete-delay --delay-updates --stats \
+            -e "ssh -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts" \
+            dist/ "$DEPLOY_USER@$DEPLOY_HOST:"
+
+      - name: Check the site
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$SITE_URL/")
+            version=$(curl -fsS "$SITE_URL/version.txt?nocache=$GITHUB_RUN_ID" || true)
+            echo "attempt $attempt: $SITE_URL/ -> HTTP $code, version.txt -> ${version:-none}"
+            if [ "$code" = 200 ] && [ "$version" = "$GITHUB_SHA" ]; then
+              echo "OK: the home page answers 200 and serves commit $GITHUB_SHA"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::$SITE_URL/ does not answer 200 with commit $GITHUB_SHA"
+          exit 1
+
+      - name: Remove the SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
