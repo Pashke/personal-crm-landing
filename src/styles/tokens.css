@@ -17,7 +17,8 @@
   --color-muted-dark-2: #b9c7b8;
   --color-muted-light: #4a5a50;
   --color-line-light: #c9bc9f;
-  --color-rust: oklch(0.58 0.15 38);
+  /* Darker than the design's oklch(0.58 0.15 38): button text needs 4.5:1 contrast (4.7:1 now, was 4.1:1) */
+  --color-rust: oklch(0.55 0.15 38);
   --color-rust-ink: #fbf3e2;
 
   /* Font families (the font files themselves are set up in astro.config.mjs) */
@@ -43,7 +44,8 @@
    * word (about 7em) still fits between the hero frame lines (80px in total).
    */
   --text-h1: min(42px, calc((100vw - 80px) / 7));
-  --text-h1--line-height: 1;
+  /* 1.05, not the design's 1: at 1 the dots of "Ё" touch the line above */
+  --text-h1--line-height: 1.05;
   --text-h1--letter-spacing: -0.005em;
   --text-h2: 34px;
   --text-h2--line-height: 1.02;
@@ -117,6 +119,13 @@
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
+
+  /*
+   * Container query widths. The hero's search demo cell is at least this wide
+   * only when the hero columns have stacked (tablet, ~640-820px);
+   * side by side each column is at most ~540px.
+   */
+  --container-hero-stacked: 600px;
 }
 
 /* Type scale, desktop values */

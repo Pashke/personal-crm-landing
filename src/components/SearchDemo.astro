@@ -1,6 +1,8 @@
 ---
 // A static picture of the app's search: "Ан" typed, two matching contacts.
 // Decorative only, so it is hidden from screen readers.
+// Next to the hero text it sits at the right edge of its column; once the
+// hero columns stack (tablet), it lines up with the text on the left.
 const query = "Ан";
 
 const contacts = [
@@ -9,33 +11,35 @@ const contacts = [
 ];
 ---
 
-<div aria-hidden="true" class="flex w-full flex-col gap-8 md:max-w-460 md:gap-10 md:justify-self-end">
-  <div class="flex h-46 items-center gap-10 rounded-sm bg-cream px-14 text-search text-forest md:h-54 md:gap-12 md:px-18">
-    <span class="size-12 shrink-0 rounded-full border-2 border-forest md:size-14"></span>
-    <span>
-      {query}<span class="ml-1 inline-block h-18 w-1.5 bg-forest align-[-3px] md:h-20 md:align-[-4px]"></span>
-    </span>
-  </div>
-  <ul class="flex flex-col divide-y divide-line-dark rounded-sm border border-line-dark">
-    {
-      contacts.map((contact, i) => (
-        <li class="flex items-center gap-12 px-12 py-10 md:gap-14 md:px-16 md:py-14">
-          <span
-            class:list={[
-              "flex size-34 shrink-0 items-center justify-center rounded-full font-display text-initials font-medium md:size-42",
-              i === 0 ? "bg-gold text-forest" : "border border-gold text-gold",
-            ]}
-          >
-            {contact.initials}
-          </span>
-          <span class="flex min-w-0 flex-col gap-2 md:gap-3">
-            <span class="text-name font-bold">
-              <span class="text-gold">{contact.name.slice(0, query.length)}</span>{contact.name.slice(query.length)}
+<div aria-hidden="true" class="@container w-full">
+  <div class="flex w-full flex-col gap-8 md:max-w-460 md:gap-10 @max-hero-stacked:ml-auto">
+    <div class="flex h-46 items-center gap-10 rounded-sm bg-cream px-14 text-search text-forest md:h-54 md:gap-12 md:px-18">
+      <span class="size-12 shrink-0 rounded-full border-2 border-forest md:size-14"></span>
+      <span>
+        {query}<span class="ml-1 inline-block h-18 w-1.5 bg-forest align-[-3px] md:h-20 md:align-[-4px]"></span>
+      </span>
+    </div>
+    <ul class="flex flex-col divide-y divide-line-dark rounded-sm border border-line-dark">
+      {
+        contacts.map((contact, i) => (
+          <li class="flex items-center gap-12 px-12 py-10 md:gap-14 md:px-16 md:py-14">
+            <span
+              class:list={[
+                "flex size-34 shrink-0 items-center justify-center rounded-full font-display text-initials font-medium md:size-42",
+                i === 0 ? "bg-gold text-forest" : "border border-gold text-gold",
+              ]}
+            >
+              {contact.initials}
             </span>
-            <span class="text-meta text-pretty text-muted-dark-2">{contact.note}</span>
-          </span>
-        </li>
-      ))
-    }
-  </ul>
+            <span class="flex min-w-0 flex-col gap-2 md:gap-3">
+              <span class="text-name font-bold">
+                <span class="text-gold">{contact.name.slice(0, query.length)}</span>{contact.name.slice(query.length)}
+              </span>
+              <span class="text-meta text-pretty text-muted-dark-2">{contact.note}</span>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </div>
